@@ -62,6 +62,10 @@ class: center, middle
   - [@YannColeu](https://twitter.com/YannColeu)
 
 ---
+class: center, middle
+# 3. Docker
+
+---
 # 3. Docker
 ## C'est quoi un conteneur?
   - Un processus système, un simple fork
@@ -112,7 +116,6 @@ Dans le noyau Linux, il y a quelques concepts de confinement:
     - WebUI
     - Orchestrateur de cluster Docker (Swarm, Kubernetes, AWS ECS)
 
-
 ---
 # 3. Docker
 ## Avantages
@@ -121,12 +124,46 @@ Tous ces concepts autour de Docker apportent des avantages certains:
   - Processus donc "boot instantané"
   - OnionFS donc Gain de place + boot instantané pour les nouveaux conteneurs
   - Plate-forme centralisée de partage d'images Docker: [Hub](https://hub.docker.com/)
-  -
+  - Services déjà packagés (Mongo, Redis, Apache, Owncloud)
   - Sécurité possible (mais pas par défaut)
   - Gestion du réseau automatique
 
 ## Dev ![](https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-16.png) Ops
+---
+# 3. Docker
+## Ecosystème officiel
 
+- Compose
+  ```
+  web:
+  build: .
+  ports:
+   - "5000:5000"
+  links:
+   - redis
+  redis:
+    image: redis
+  ```
+
+---
+# 3. Docker
+## Ecosystème officiel
+
+- Swarm
+```
+web:
+build: .
+ports:
+ - "5000:5000"
+links:
+ - redis
+redis:
+  image: redis
+```
+
+---
+class: center, middle
+# 4. Microservices
 
 ---
 # 4. Microservices
