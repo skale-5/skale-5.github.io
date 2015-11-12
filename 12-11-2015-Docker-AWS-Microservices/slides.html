@@ -14,6 +14,7 @@
         font-weight: normal;
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      img[alt=dockerfs] { width: 500px; }
     </style>
   </head>
   <body>
@@ -81,6 +82,50 @@ Ce n'est **PAS** une VM !
 
 ![](https://raw.githubusercontent.com/skale-5/slides/master/12-11-2015-Docker-AWS-Microservices/images/vm-vs-docker.png)
 
+---
+# 3. Docker
+## Concepts de confinement et sécurité
+Dans le noyau Linux, il y a quelques concepts de confinement:
+
+  - Les **namespaces** donne **accès** aux ressources
+  - Les **CGroups restreignent** la consommation de ces dernières
+  - SELinux et AppArmor définissent un politique de sécurité d'accès des processus
+    - [Bane](https://github.com/jfrazelle/bane)
+  - Seccomp limite les appels noyaux
+
+---
+# 3. Docker
+## Systèmes de fichier
+  - Un conteneur vient avec son filesystem (Image)
+  - Système de fichiers en oignons (AUFS, BTRFS, [OverlayFS](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/))
+
+![dockerfs](https://raw.githubusercontent.com/skale-5/slides/master/12-11-2015-Docker-AWS-Microservices/images/docker-fs.png)
+
+---
+# 3. Docker
+## Docker engine, docker clients
+  - Le Docker engine est un démon qui gère les conteneurs locaux et l'enviromment d'exécution
+  - Controlé uniquement via une API REST
+  - Les clients peuvent donc prendre plusieurs formes:
+    - CLI
+    - UI
+    - WebUI
+    - Orchestrateur de cluster Docker (Swarm, Kubernetes, AWS ECS)
+
+
+---
+# 3. Docker
+## Avantages
+Tous ces concepts autour de Docker apportent des avantages certains:
+
+  - Processus donc "boot instantané"
+  - OnionFS donc Gain de place + boot instantané pour les nouveaux conteneurs
+  - Plate-forme centralisée de partage d'images Docker: [Hub](https://hub.docker.com/)
+  -
+  - Sécurité possible (mais pas par défaut)
+  - Gestion du réseau automatique
+
+## Dev ![](https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-16.png) Ops
 
 
 ---
