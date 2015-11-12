@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <title>Docker, AWS et Microservices</title>
     <meta charset="utf-8">
     <style>
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -23,6 +23,8 @@ class: center, middle
 
 # Docker, AWS et Microservices
 
+![docker.png](https://raw.githubusercontent.com/skale-5/slides/master/12-11-2015-Docker-AWS-Microservices/images/docker.png)
+
 ---
 
 # Agenda
@@ -36,14 +38,50 @@ class: center, middle
 7. Demo
 8. Conclusions
 ---
-
 # 1. Introduction
+## Histoire de Docker
+  - 2013 - Une interface à LXC, un chroot sous stéroïds
+  - 2014 - Solution qui résout un problème que l'on cherche encore
+  - 2015 - Plate-forme ouverte d'applications distribuées pour les développeurs et sysadmins
+
+## Paradigme inspiré de la technologie
+  - L'imagination humaine est le seul frein (Docker == VM)
+  - On aime Docker, on veut l'utiliser
 
 ---
 # 2. Speakers
+## Souhail Hanfi
+  - AWS Expert
+  - Software and System Architect
+  - [@venomax666](https://twitter.com/venomax666)
+
+## Yann Coleu
+  - DevOps Expert
+  - Golang and Docker ![](https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-16.png)
+  - [@YannColeu](https://twitter.com/YannColeu)
 
 ---
 # 3. Docker
+## C'est quoi un conteneur?
+  - Un processus système, un simple fork
+  - Confiné grâce au noyau
+  - Un conteneur peut avoir accès à:
+    - Un système de fichier
+    - Réseau
+    - CPU
+    - Mémoire
+  - Ca ressemble à une VM, ça à l'odeur d'une VM...
+
+
+Ce n'est **PAS** une VM !
+
+---
+# 3. Docker
+## Différence conteneur vs VM
+
+![](https://raw.githubusercontent.com/skale-5/slides/master/12-11-2015-Docker-AWS-Microservices/images/vm-vs-docker.png)
+
+
 
 ---
 # 4. Microservices
@@ -53,6 +91,12 @@ class: center, middle
 
 ---
 # 6. AWS - EC2 Container Service
+
+---
+# 7. Demo
+
+---
+# 8. Conclusions
 
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
