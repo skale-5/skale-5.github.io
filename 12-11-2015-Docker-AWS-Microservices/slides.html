@@ -123,7 +123,8 @@ Tous ces concepts autour de Docker apportent des avantages certains:
 ## Ecosystème officiel
 
 - Compose
-  ```
+
+```yaml
   web:
   build: .
   ports:
@@ -132,22 +133,23 @@ Tous ces concepts autour de Docker apportent des avantages certains:
    - redis
   redis:
     image: redis
-  ```
+```
 
 ---
 # 3. Docker
 ## Ecosystème officiel
 
-- Swarm
-```
-web:
-build: .
-ports:
- - "5000:5000"
-links:
- - redis
-redis:
-  image: redis
+- Docker-machine
+
+```yaml
+  web:
+  build: .
+  ports:
+   - "5000:5000"
+  links:
+   - redis
+  redis:
+    image: redis
 ```
 
 ---
