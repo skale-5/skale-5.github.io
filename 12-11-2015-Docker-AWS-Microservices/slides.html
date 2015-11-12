@@ -27,19 +27,9 @@ class: center, middle
 6. AWS - EC2 Container Service
 7. Demo
 8. Conclusions
----
-# 1. Introduction
-## Histoire de Docker
-  - 2013 - Une interface à LXC, un chroot sous stéroïds
-  - 2014 - Solution qui résout un problème que l'on cherche encore
-  - 2015 - Plate-forme ouverte d'applications distribuées pour les développeurs et sysadmins
-
-## Paradigme inspiré de la technologie
-  - L'imagination humaine est le seul frein (Docker == VM)
-  - On aime Docker, on veut l'utiliser
 
 ---
-# 2. Speakers
+# 1. Speakers
 ## Souhail Hanfi
   - AWS Expert
   - Software and System Architect
@@ -80,9 +70,9 @@ Ce n'est **PAS** une VM !
 ## Concepts de confinement et sécurité
 Dans le noyau Linux, il y a quelques concepts de confinement:
 
-  - Les **namespaces** donne **accès** aux ressources
+  - Les **namespaces** donnent **accès** aux ressources
   - Les **CGroups restreignent** la consommation de ces dernières
-  - SELinux et AppArmor définissent un politique de sécurité d'accès des processus
+  - SELinux et AppArmor définissent une politique de sécurité d'accès des processus
     - [Bane](https://github.com/jfrazelle/bane)
   - Seccomp limite les appels noyaux
 
@@ -141,15 +131,33 @@ Tous ces concepts autour de Docker apportent des avantages certains:
 
 - Docker-machine
 
-```yaml
-  web:
-  build: .
-  ports:
-   - "5000:5000"
-  links:
-   - redis
-  redis:
-    image: redis
+```bash
+$ docker-machine create --driver amazonec2 \
+--amazonec2-access-key AKI******* \
+--amazonec2-secret-key 8T93C********* \
+--amazonec2-vpc-id vpc-****** aws01
+```
+
+---
+# 3. Docker
+## Ecosystème officiel
+
+- Swarm
+
+```bash
+$ docker run swarm create
+fe0cc96a72cf04dba8c1c4aa79536ec3
+
+$ docker-machine create \
+        -d virtualbox \
+        --swarm \
+        --swarm-master \
+        --swarm-discovery token://fe0cc96a72cf04dba8c1c4aa79536ec3 \
+        swarm-master
+
+$ eval $(docker-machine env --swarm swarm-master)
+$ docker ps
+
 ```
 
 ---
@@ -158,9 +166,43 @@ class: center, middle
 
 ---
 # 4. Microservices
+## Définition
+- Chaque composant est un service
+- Un service est la représentation au sens métier
+- Gestion des données décentralisée
 
 ---
-# 5. Demo
+# 4. Microservices
+## Avantages
+- Plusieurs petites équipes (two pizzas rule)
+- Responsabilisation des équipes
+- Gouvernance décentralisée
+- Code plus facile à maintenir
+- Mise à jour facilitée, plus fréquente
+- Scalibilité plus précise
+- Chaque service à sa stack technique propre
+
+---
+# 4. Microservices
+## Inconvénients
+- "Casser" l'application en services n'est pas simple
+- La sécurité doit être globale
+- Latences réseau
+
+---
+# 4. Microservices
+## Technologies
+- Service discovery (consul, etcd)
+- LoadBalancing (haproxy, fabio)
+- Containers (docker)
+- Orchestrator (ECS, Kubernetes, Swarm)
+
+---
+# 4. Microservices
+## Nouvelle vision de l'infrastructure
+
+![](https://raw.githubusercontent.com/skale-5/slides/master/12-11-2015-Docker-AWS-Microservices/images/quadrillage.png)
+
 
 ---
 # 6. AWS - EC2 Container Service
